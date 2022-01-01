@@ -1,0 +1,24 @@
+class Solution {
+    func buddyStrings(_ s: String, _ goal: String) -> Bool {
+        if(s.isEmpty || goal.isEmpty ){return false}
+        if(s.count != goal.count) { return false}
+        
+        let s = Array(s)
+        let goal = Array(goal)
+        var diffs : [Int] = []
+        for i in 0 ... s.count-1 {
+            if(s[i] != goal[i]){
+                diffs.append(i)
+            }
+        }
+        if(diffs.count == 2 && s[diffs[0]] == goal[diffs[1]] && s[diffs[1]] == goal[diffs[0]]){
+            return true
+        }
+        else if(diffs.count == 0){
+            return Set(s).count < s.count
+        }
+        
+        return false
+    }
+}
+
